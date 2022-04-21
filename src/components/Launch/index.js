@@ -1,5 +1,5 @@
 import { dateMMDDyyyy } from 'utils';
-import styles from './Launch.module.css';
+import styles from './styles.module.css';
 const { box, boxBody, boxImg, boxText, boxTitle } = styles;
 
 /**
