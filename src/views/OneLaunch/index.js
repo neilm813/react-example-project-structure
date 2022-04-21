@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 
 import 'App.css';
 import { getLaunch } from 'services';
-import { Launch, LoadingDots } from 'components';
+import { AxiosErr, Launch, DotRowFade } from 'components';
 
 export const OneLaunch = () => {
   const { id } = useParams();
@@ -25,7 +25,7 @@ export const OneLaunch = () => {
         .then((data) => setLaunch(data))
         .catch((e) => {
           console.log(e.response);
-          setError(e?.response?.data);
+          setError(e);
         })
         .finally(() => setLoading(false));
     }, 1500);
@@ -34,8 +34,8 @@ export const OneLaunch = () => {
   return (
     <div>
       <h2 className="text-center">Launch Details</h2>
-      {error && <p className="text-danger text-center">{error}</p>}
-      <LoadingDots loading={loading} />
+      <AxiosErr loading={loading} error={error} />
+      <DotRowFade loading={loading} color="#6991CD" />
       <Launch launch={launch} />
     </div>
   );

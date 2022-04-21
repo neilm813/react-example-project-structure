@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 import 'App.css';
 import { getAllLaunches } from 'services';
-import { Launch, LoadingDots } from 'components';
+import { AxiosErr, CircleDotExpansion, Launch } from 'components';
 
 export const Launches = () => {
   const [launches, setLaunches] = useState(null);
@@ -24,7 +24,7 @@ export const Launches = () => {
           setLaunches(data);
         } catch (e) {
           console.log(e.response);
-          setError(e?.response?.data);
+          setError(e);
         } finally {
           setLoading(false);
         }
@@ -37,8 +37,8 @@ export const Launches = () => {
   return (
     <div>
       <h2 className="text-center">Photographed Launches</h2>
-      {error && <p className="text-danger text-center">{error}</p>}
-      <LoadingDots loading={loading} />
+      <AxiosErr loading={loading} error={error} />
+      <CircleDotExpansion loading={loading} />
       {launches &&
         launches
           .filter((launch) => launch.links.flickr.original.length)
