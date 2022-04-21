@@ -1,0 +1,26 @@
+.box {
+  border: '1px solid gray';
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  background-color: #202225;
+}
+
+.boxBody {
+  padding: 1rem;
+}
+
+.boxBody .boxTitle {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.boxBody .boxText {
+  margin-bottom: 1rem;
+}
+
+.boxImg {
+  width: 100%;
+  display: block;
+  /* border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; */
+}

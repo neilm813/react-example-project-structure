@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Example React Project Structure
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- This example is not using any styled component libraries or much css to keep the example simple.
+- JSDoc comments are used as an example of how to document and improve autocomplete, but it is limited compared to typescript.
+- The benefits of taking more time up-front to structure an app this way are not immediately clear when your app is small, however, when your app grows, it becomes a very helpful.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Absolute Path Imports
 
-### `npm start`
+- To avoid relative path hell, such as `../../../../foo/bar`, absolute imports have been enabled via [jsonconfig.json](./jsconfig.json) so that imports start at the `src` folder.
+- This means regardless of how nested you are, your imports can be written the same.
+- However, when a file imports a file that is in the same folder, relative imports are typically still used since it is clean and easy to do so `./my-neighbor.js`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Structure Explained
 
-### `npm test`
+- [File Structure Blog Post](https://www.joshwcomeau.com/react/file-structure/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Import / Export
 
-### `npm run build`
+#### `index` Pattern
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- This organization pattern is not specific to react, it can be used in other node apps.
+- The `index` file in each folder clarifies what code in the folder is supposed to be available outside of the folder. Some files may be used only internally in the folder by other files within, whereas some files are meant to be imported from outside of the folder--these are the ones the `index` exports.
+- This pattern also allows you to refer to the **folder name** when `import`ing, which will automatically look for an `index` file, reducing the length and import statement and naming repetition (`from 'components/Button/Button'` vs `from 'components/Button`).
+- The `index` can also be used to `export` code from multiple files in the folder so a single `import` statement can `import` everything needed from that folder.
+- **Downside**: The downside of this is when you make each component an `index` file and you open multiple components, all the tabs in your code editor are named `index`, the tabs become wider to show the folder name so they can be differentiated, cluttering your tabs. A solution is discussed in the above linked blog post: to write the component in a file named after the component / its folder, and then also make an `index` file that exports it.However, this requires creating extra file.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Named Exports
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- The `default` keyword is avoided in favor of named exports. Named exports require you to use the same name when you import, which improves consistency.
 
-### `npm run eject`
+#### Ordering
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `import`s should be at the top of the file and start with third party imports (installed packages) and then local imports (your own files) should be below.
+- It's also common to alphabetize named imports: `import { a, b, c, d} from 'foo'`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Environment Configurations
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- The [.env](./.env) file is usually ignored (not here so it is shown). This is where you store configuration info that may change between environments, such as a port, URLs, API keys, or other kinds of credentials.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+### Folders
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Components
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Each component itself is a folder so that files related to only that component can be grouped with that component directly by placing them in the folder. Such as test files that test the component, child components / hooks / helper files used only for this component, and `css` modules. I prefer to use a styled component library (such as MUI or Chakra) over `css` modules, but even when you only have 1 file to start with, it still often is a good idea to make a folder so it's easy to add related files later as the need arises without having to change your imports.
+- Components do not represent a full page, we call those components a view / page, so they go in the [views](./src/views) folder. Views have urls that route to the view. Components represent smaller parts of views / pages, such as a navbar, a navbar is not an entire page, only part of one.
 
-### Code Splitting
+#### [services](./src/services)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Services are not specific to react, they are also commonly used in MVC structures to keep controllers skinny and focused on handling the `request` and `response` rather than logic and interaction with the DB, which is moved into a service.
+- Generally this is used to store functions that make API requests so that these requests and any logic that needs to happen each time the request is made can be shared.
+- This also avoids the need to repeat the URL for the request in multiple components, import `axios` into multiple components, or import the URLs into multiple components.
 
-### Analyzing the Bundle Size
+#### [utils](./src/utils)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Reusable functions that don't need to be components but may be used by multiple components.
+- `utils` and `helpers` are often used synonymously, however, some people make the distinction that helpers are specific to the project and utils are not--utils can be copied from one project into another in this case, while helpers couldn't be.
 
-### Making a Progressive Web App
+#### [assets](./src/assets)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Any files the app needs at runtime (files that need to be imported into `js` files in `src`), such as images, fonts, sounds, etc.
