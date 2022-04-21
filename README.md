@@ -51,7 +51,9 @@
 
 #### Components
 
-- Each component itself is a folder so that files related to only that component can be grouped with that component directly by placing them in the folder. Such as test files that test the component, child components / hooks / helper files used only for this component, and `css` modules. I prefer to use a styled component library (such as MUI or Chakra) over `css` modules, but even when you only have 1 file to start with, it still often is a good idea to make a folder so it's easy to add related files later as the need arises without having to change your imports.
+- Each component itself is a folder so that files related to only that component can be grouped with that component directly by placing them in the folder. Such as test files that test the component, child components / hooks / helper files used only for this component, and `css` modules.
+  - Even when you only have 1 file to start with, it still often is a good idea to make a folder so it's easy to add related files later as the need arises without having to change your imports.
+  - To keep this example simple, no styling libraries are used. For a project, I recommend using styled component library that is popular in the industry (such as MUI or Chakra) over only `css` modules.
 - Components do not represent a full page, we call those components a view / page, so they go in the [views](./src/views) folder. Views have urls that route to the view. Components represent smaller parts of views / pages, such as a navbar, a navbar is not an entire page, only part of one.
 
 #### [services](./src/services)
