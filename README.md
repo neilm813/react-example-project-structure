@@ -2,7 +2,7 @@
 
 - This example is not using any styled component libraries or much css to keep the example simple.
 - JSDoc comments are used as an example of how to document and improve autocomplete, but it is limited compared to typescript.
-- The benefits of taking more time up-front to structure an app this way are not immediately clear when your app is small, however, when your app grows, it becomes a very helpful.
+- The benefits of taking more time up-front to structure an app this way are not immediately clear when your app is small, however, when your app grows, it becomes very helpful to have followed this or other organized structures.
 
 ---
 
@@ -10,7 +10,7 @@
 
 - To avoid relative path hell, such as `../../../../foo/bar`, absolute imports have been enabled via [jsonconfig.json](./jsconfig.json) so that imports start at the `src` folder.
 - This means regardless of how nested you are, your imports can be written the same.
-- However, when a file imports a file that is in the same folder, relative imports are typically still used since it is clean and easy to do so `./my-neighbor.js`.
+- However, when a file imports a file that is in the same folder, relative imports are typically still used since it is clean and easy to do so: `./my-neighbor.js`.
 
 ---
 
@@ -24,18 +24,20 @@
 
 - This organization pattern is not specific to react, it can be used in other node apps.
 - The `index` file in each folder clarifies what code in the folder is supposed to be available outside of the folder. Some files may be used only internally in the folder by other files within, whereas some files are meant to be imported from outside of the folder--these are the ones the `index` exports.
-- This pattern also allows you to refer to the **folder name** when `import`ing, which will automatically look for an `index` file, reducing the length and import statement and naming repetition (`from 'components/Button/Button'` vs `from 'components/Button`).
+- This pattern also allows you to refer to the **folder name** when importing, which will automatically look for an `index` file, reducing the length of import statement and naming repetition (`from 'components/Button/Button'` vs `from 'components/Button`).
 - The `index` can also be used to `export` code from multiple files in the folder so a single `import` statement can `import` everything needed from that folder.
-- **Downside**: The downside of this is when you make each component an `index` file and you open multiple components, all the tabs in your code editor are named `index`, the tabs become wider to show the folder name so they can be differentiated, cluttering your tabs. A solution is discussed in the above linked blog post: to write the component in a file named after the component / its folder, and then also make an `index` file that exports it.However, this requires creating extra file.
+- **Downside**: The downside of this is when you make each component an `index` file and you open multiple components, all the tabs in VSCode are named `index`. The tabs then become wider to show the folder name so they can be differentiated which leaves less space for more tabs. A solution is discussed in the above linked blog post: to write the component in a file named after the component / its folder, and then ***also*** make an `index` file that exports it so the benefits of both can be had. However, this requires creating extra file.
 
 #### Named Exports
 
-- The `default` keyword is avoided in favor of named exports. Named exports require you to use the same name when you import, which improves consistency.
+- The `default` keyword is avoided in favor of named exports to simplify by using one syntax instead of sometimes using `default` and sometimes using named exports.
+- Named exports require you to use the same name when you import which increases consistency.
+- However, plenty of large and successful projects use `default` exports.
 
 #### Ordering
 
 - `import`s should be at the top of the file and start with third party imports (installed packages) and then local imports (your own files) should be below.
-- It's also common to alphabetize named imports: `import { a, b, c, d} from 'foo'`
+- It's also common to alphabetize named imports: `import { a, b, c, d } from 'foo'`
 
 ### Environment Configurations
 
@@ -44,6 +46,8 @@
 ---
 
 ### Folders
+
+- In some folders, it is less common to use an `index` file, such as the `utils` or `services` folder.
 
 #### Components
 
@@ -64,3 +68,12 @@
 #### [assets](./src/assets)
 
 - Any files the app needs at runtime (files that need to be imported into `js` files in `src`), such as images, fonts, sounds, etc.
+
+---
+
+## Additional Resources
+
+### Group Collaboration
+
+- [Git Branching Cheatsheet](https://docs.google.com/document/d/1lMPkGE6j0JhF6LX_-afnoSMOvCIVueGpFfkHo23_YU0/edit?usp=sharing)
+- A formatter and linter should be installed, such as `prettier` and `ESLint` and a [pre-commit hook](https://prettier.io/docs/en/precommit.html#option-2-pretty-quickhttpsgithubcomazzpretty-quick) which auto formats the code by the project's formatter's config on each `git commit` to standardize formatting across all collaborators.
