@@ -41,7 +41,7 @@
 
 ### Environment Configurations
 
-- The [.env](./.env) file is usually ignored (not here so it is shown). This is where you store configuration info that may change between environments, such as a port, URLs, API keys, or other kinds of credentials.
+- The [.env](./.env) file is usually ignored (it's included here as an example). This is where you store configuration info that may change between environments, such as a port, URLs, API keys, or other kinds of credentials.
 
 ---
 
