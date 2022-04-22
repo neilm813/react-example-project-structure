@@ -8,7 +8,7 @@ const { box, boxBody, boxImg, boxText, boxTitle } = styles;
 
 /**
  * @typedef {object} LaunchProps
- * @property {import('../../services/api-spacex').Launch} launch
+ * @property {import('../../services/apiSpaceX').Launch} launch
  * @property {object} style Styles to forward to this component's root element.
  * @property {boolean} [isPreview] Whether or not to render a preview or more
  *    details. Defaults to `false`.

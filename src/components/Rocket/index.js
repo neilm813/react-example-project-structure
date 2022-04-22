@@ -1,6 +1,6 @@
 /**
  * @typedef {object} RocketProps
- * @property {import('../../services/api-spacex').Rocket} rocket
+ * @property {import('../../services/apiSpaceX').Rocket} rocket
  */
 
 /**

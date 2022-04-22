@@ -1,1 +1,1 @@
-export * from './api-spacex';
+export * from './apiSpaceX';
