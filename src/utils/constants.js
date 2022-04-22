@@ -1,4 +1,19 @@
-// This could be a folder if there were a lot of constants to categorize.
+/* 
+This file is to store frequently referenced hard-coded data that is constant
+(doesn't change) instead of hard-coding it in multiple places.
+
+It doesn't change in that, once set, it is never set again. However, what it
+is originally set to can be updated if needed so that everywhere that
+references it will have the up-to-date info.
+
+SCREAMING_SNAKE_CASE is the common naming convention for constants.
+
+Even commonly used strings that are passed as arguments can be added here.
+
+This could be a folder if there were a lot of constants to categorize.
+*/
+
+export const COMPANY_NAME = 'SpaceX';
 
 /**
  * Country names object using 3-letter country codes to reference country name.
