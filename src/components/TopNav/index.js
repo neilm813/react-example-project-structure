@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import logoUrl from 'assets/images/spacex-logo.png';
 import 'App.css';
+import logoUrl from 'assets/images/spacex-logo.png';
+import { COMPANY_NAME } from 'utils';
 import styles from './styles.module.css';
 const { logo, navHeader } = styles;
 
@@ -9,7 +10,7 @@ export const TopNav = ({ position = 'fixed' }) => {
   return (
     <header className={[navHeader, 'gap-md'].join(' ')} style={{ position }}>
       <div className={logo}>
-        <img src={logoUrl} alt="Space X Logo" />
+        <img src={logoUrl} alt={`${COMPANY_NAME} logo`} />
       </div>
       <nav className="row gap-md">
         <Link to="/">Home</Link>
