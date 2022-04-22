@@ -1,4 +1,9 @@
 {
+  "author": {
+    "name": "Neil Mosunic",
+    "email": "neilm813@gmail.com",
+    "url": "https://github.com/neilm813/"
+  },
   "name": "example-project-structure",
   "version": "0.1.0",
   "private": true,
