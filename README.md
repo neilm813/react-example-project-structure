@@ -4,12 +4,15 @@
 - JSDoc comments are used as an example of how to document and improve autocomplete, but it is limited compared to typescript.
 - The benefits of taking more time up-front to structure an app this way are not immediately clear when your app is small, however, when your app grows, it becomes very helpful to have followed this or other organized structures.
 
+![Website Preview](./site-preview.png)
+
 ---
 
 ## Opinionated
 
-- `create-react-app` is not very opinionated, it's up to you largely to decide how to structure your project. The pro is that this is flexible and it stays out of your way, the con is you may tie yourself into a disorganized knot and your team may not have a clear idea of how to structure things.
-- Part of the appeal of `next.js`, besides it adding a lot of great functionality, is that it is highly opinionated about how to structure the project so you aren't left wondering as much what is a good way to structure things and trying to make sure your team follows your specific structure. `next.js` has already come up with an opinion that many have found to be good. This also has the benefit that many companies that use `next.js` follow it's opinionated structure, so switching companies doesn't come with as much change in project structure.
+- `create-react-app` (CRA) is not very opinionated, it's up to you largely to decide how to structure your project. The pro is that this is flexible and it stays out of your way, the con is you may tie yourself into a disorganized knot and your team may not have a clear idea of how to structure things.
+- This is an opinionated example of how to structure a CRA, there are other ways that work well.
+- `next.js` is a popular example of a more opinionated react app template. Besides it adding a lot of great functionality, it is highly opinionated about how to structure the project so you don't have to come up with as much on your own, `next.js` has already come up with an opinionated structure that many have found to be good. This also has the benefit that many companies that use `next.js` follow it's opinionated structure, so switching companies doesn't come with as much change in project structure.
 
 ---
 
