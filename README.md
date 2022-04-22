@@ -52,7 +52,7 @@
 ### Environment Configurations
 
 - The [.env](./.env) file is usually ignored (it's included here as an example). This is where you store configuration info that may change between environments, such as a port, URLs, API keys, or other kinds of credentials.
-- See [api-spacex file](./src/services/api-spacex.js)
+- See [apiSpaceX file](./src/services/apiSpaceX.js)
 
 ### Folders
 
@@ -60,15 +60,15 @@
 
 #### [components](./src/components/)
 
-- Each component itself is a folder so that files related to only that component can be grouped with that component directly by placing them in the folder. Such as test files that test the component, child components / hooks / helper files used only for this component, and `css` modules.
+- Each component itself is a folder so that files related to only that component can be grouped with that component directly by placing them in the folder; such as test files that test the component, child components / hooks / helper files used only for this component, and `css` modules.
   - Even when you only have 1 file to start with, it still often is a good idea to make a folder so it's easy to add related files later as the need arises without having to change your imports.
-  - To keep this example simple, no styling libraries are used. For a project, I recommend using styled component library that is popular in the industry (such as MUI or Chakra) over only `css` modules.
-- Components do not represent a full page, we call those components a view / page, so they go in the [views](./src/views) folder. Views have urls that route to the view. Components represent smaller parts of views / pages, such as a navbar, a navbar is not an entire page, only part of one.
+  - To keep this example simple, no styling libraries are used. For a larger project, I recommend using a styled component library that is popular in the industry (such as MUI and Chakra) over only `css` modules.
+- Components do not represent a full page, we call those components a view / page, so they go in the [views](./src/views) folder. Views have urls that route to the view while components represent smaller parts of views / pages, such as a navbar, a navbar is not an entire page, only part of one.
 
 #### [services](./src/services)
 
-- Services are not specific to react, they are also commonly used in MVC structures to keep controllers skinny and focused on handling the `request` and `response` rather than logic and interaction with the DB, which is moved into a service.
-- Generally this is used to store functions that make API requests so that these requests and any logic that needs to happen each time the request is made can be shared.
+- Services are not specific to react, they are also commonly used in MVC structures to keep controllers skinny and focused on handling the `request` and `response` rather than logic and interaction with the DB, which is moved into a service and then can be re-used in multiple routes if needed.
+- Generally a service file is used to store functions that make API requests so that these requests and any logic that needs to happen each time the request is made can be shared.
 - This also avoids the need to repeat the URL for the request in multiple components, import `axios` into multiple components, or import the URLs into multiple components.
 
 #### [utils](./src/utils)
