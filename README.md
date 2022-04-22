@@ -52,6 +52,7 @@
 ### Environment Configurations
 
 - The [.env](./.env) file is usually ignored (it's included here as an example). This is where you store configuration info that may change between environments, such as a port, URLs, API keys, or other kinds of credentials.
+- See [api-spacex file](./src/services/api-spacex.js)
 
 ### Folders
 
