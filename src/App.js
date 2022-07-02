@@ -1,9 +1,8 @@
-import { Routes, Route } from 'react-router-dom';
 import { Fragment } from 'react';
+import { Outlet } from 'react-router-dom';
 
 import './App.css';
 import { TopNav } from 'components';
-import { Home, Launches, OneLaunch } from 'views';
 
 function App() {
   return (
@@ -15,11 +14,8 @@ function App() {
       */}
       <TopNav position="static" />
       <div className="container">
-        <Routes>
-          <Route index path="/" element={<Home />} />
-          <Route path="/launches" element={<Launches />} />
-          <Route path="/launches/:id" element={<OneLaunch />} />
-        </Routes>
+        {/* The currently active route component. */}
+        <Outlet />
       </div>
     </Fragment>
   );

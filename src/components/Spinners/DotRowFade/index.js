@@ -16,5 +16,5 @@ export const DotRowFade = ({ loading = true, color = '#ffffff' }) => {
     return null;
   }
 
-  return <div class={styles.loader} style={{ color: color }}></div>;
+  return <div className={styles.loader} style={{ color: color }}></div>;
 };

@@ -11,5 +11,5 @@ export const Err = ({ error }) => {
     return null;
   }
 
-  return <b class="text-danger">{error.message}</b>;
+  return <b className="text-danger">{error.message}</b>;
 };

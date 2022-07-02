@@ -14,8 +14,8 @@ export const AxiosErr = ({ error }) => {
   }
 
   return (
-    <p class="text-center">
-      <b class="text-danger">Network Error{`: ${error.response.data}`}</b>
+    <p className="text-center">
+      <b className="text-danger">Network Error{`: ${error.response.data}`}</b>
     </p>
   );
 };
