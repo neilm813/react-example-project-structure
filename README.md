@@ -84,7 +84,7 @@
 
 ## Additional Resources
 
-- [You might not need an effect](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/you-might-not-need-an-effect#fetching-data)
+- [You might not need an effect (from the creator of react)](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/you-might-not-need-an-effect)
 
 ### Group Collaboration
 
