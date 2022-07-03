@@ -8,6 +8,12 @@
 
 ---
 
+## TypeScript
+
+- When you have a few react projects under your belt, I would recommend learning how to use TypeScript with react because it is popular in the industry for helping to reduce bugs.
+
+---
+
 ## Opinionated
 
 - `create-react-app` (CRA) is not very opinionated, it's up to you largely to decide how to structure your project. The pro is that this is flexible and it stays out of your way, the con is you may tie yourself into a disorganized knot and your team may not have a clear idea of how to structure things.
@@ -36,7 +42,7 @@
 - The `index` file in each folder clarifies what code in the folder is supposed to be available outside of the folder. Some files may be used only internally in the folder by other files within, whereas some files are meant to be imported from outside of the folder--these are the ones the `index` exports.
 - This pattern also allows you to refer to the **folder name** when importing, which will automatically look for an `index` file, reducing the length of import statement and naming repetition (`from 'components/Button/Button'` vs `from 'components/Button`).
 - The `index` can also be used to `export` code from multiple files in the folder so a single `import` statement can import everything needed from that folder.
-- **Downside**: The downside of this is when you make each component an `index` file and you open multiple components, all the tabs in VSCode are named `index`. The tabs then become wider to show the folder name so they can be differentiated which leaves less space for more tabs. A solution is discussed in the above linked blog post: to write the component in a file named after the component / its folder, and then ***also*** make an `index` file that exports it so the benefits of both can be had. However, this requires creating an extra file.
+- **Downside**: The downside of this is when if you make each component in the `index` file and you open multiple components, all the tabs in VSCode are named `index`. The tabs then become wider to show the folder name so they can be differentiated which leaves less space for more tabs. A solution is to write the component in a file named after the component / its folder, and then ***also*** make an `index` file that exports it so the benefits of both can be had. However, this requires creating an extra file as a small downside.
 
 #### Named Exports
 
@@ -56,13 +62,13 @@
 
 ### Folders
 
-- In some folders, it is less common to use an `index` file, such as the `utils` or `services` folder.
+- In some folders, it is less common to use an `index` file, such as the `utils` or `services` folder when it's more likely that a file is standalone and isn't likely to need multiple helper files to group into their own sub folder.
 
 #### [components](./src/components/)
 
-- Each component itself is a folder so that files related to only that component can be grouped with that component directly by placing them in the folder; such as test files that test the component, child components / hooks / helper files used only for this component, and `css` modules.
+- Each component itself is a folder so that files related to only that component can be grouped with that component directly by placing them in the folder; such as test files that test the component and anything used only by that component--for example custom hooks and utils are usually in their own folder because they are meant to be meant to be shareable to other components, but sometimes you have a big component that you want to split apart into multiple files to organize it so you may have hook or util logic that's only for that component that is put into a separate file that can stay in that component's folder only.
   - Even when you only have 1 file to start with, it still often is a good idea to make a folder so it's easy to add related files later as the need arises without having to change your imports.
-  - To keep this example simple, no styling libraries are used. For a larger project, I recommend using a styled component library that is popular in the industry (such as MUI and Chakra) over only `css` modules.
+  - To keep this example simple, no styling libraries are used and only a few css files are created to demonstrate multiple files for a component. For a larger project, I recommend using a styled component library that is popular in the industry (such as MUI and Chakra) over only `css` modules and setting up their provided theme or customizing the theme.
 - Components do not represent a full page, we call those components a view / page, so they go in the [views](./src/views) folder. Views have urls that route to the view while components represent smaller parts of views / pages, such as a navbar, a navbar is not an entire page, only part of one.
 
 #### [services](./src/services)
@@ -82,9 +88,21 @@
 
 ---
 
+## Running Project
+
+- If you run the project and are trying to understand it, don't forget to use react dev tools to inspect the component tree.
+
+---
+
 ## Additional Resources
 
 - [You might not need an effect (from the creator of react)](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/you-might-not-need-an-effect)
+
+### Useful Packages
+
+- [react-query for data fetching](https://react-query.tanstack.com/overview)
+- [formik for form management](https://formik.org/)
+- [MUI styled components](https://mui.com/)
 
 ### Group Collaboration
 

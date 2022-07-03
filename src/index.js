@@ -4,21 +4,31 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import { Home, Launches, OneLaunch } from 'views';
+import { Home, Launches, Layout, NotFound, OneLaunch } from 'views';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    {/* https://reactrouter.com/docs/en/v6/getting-started/overview#configuring-routes */}
     <BrowserRouter>
+      {/* https://reactrouter.com/docs/en/v6/getting-started/overview#configuring-routes */}
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<Home />} />
-          <Route path="/launches" element={<Launches />} />
-          <Route path="/launches/:id" element={<OneLaunch />} />
-          {/* Catch all not found redirect */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          {/*
+          Multiple layouts can be created with views grouped into different
+          layouts via nesting if they share a common layout and styles.
+          */}
+          <Route element={<Layout />}>
+            {/* index will be rendered if the url isn't any of the below ones. */}
+            <Route index element={<Home />} />
+            <Route path="launches" element={<Launches />} />
+            <Route path="launches/:id" element={<OneLaunch />} />
+
+            {/* Display this component if route doesn't match any above. */}
+            <Route path="*" element={<NotFound />} />
+            {/* Redirect if route doesn't match any above. */}
+            {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -13,10 +13,14 @@ function App() {
       aren't hidden behind the fixed nav
       */}
       <TopNav position="static" />
-      <div className="container">
-        {/* The currently active route component. */}
-        <Outlet />
-      </div>
+
+      {/* 
+      Renders routed-to child component, which in this case will be the Layout,
+      which also uses Outlet to render it's routed-to child component.
+
+      E.g., App -> Layout -> Home or App -> Layout -> Launches based on url.
+      */}
+      <Outlet />
     </Fragment>
   );
 }

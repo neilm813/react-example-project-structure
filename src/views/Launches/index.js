@@ -45,6 +45,7 @@ export const Launches = () => {
           .filter((launch) => launch.links.flickr.original.length)
           .map((launch) => (
             <Launch
+              key={launch.id}
               launch={launch}
               isPreview={true}
               style={{ width: '60%', marginBottom: '1rem' }}
