@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import { Home, Launches, Layout, NotFound, OneLaunch } from 'views';
+import { Home, Launches, Layout, NotFound, OneLaunch, TestForm } from 'views';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -13,6 +13,7 @@ root.render(
     <BrowserRouter>
       {/* https://reactrouter.com/docs/en/v6/getting-started/overview#configuring-routes */}
       <Routes>
+        {/* Nested routes have their paths concatenated to their parents. */}
         <Route path="/" element={<App />}>
           {/*
           Multiple layouts can be created with views grouped into different
@@ -23,12 +24,19 @@ root.render(
             <Route index element={<Home />} />
             <Route path="launches" element={<Launches />} />
             <Route path="launches/:id" element={<OneLaunch />} />
+            <Route path="test-form" element={<TestForm />} />
 
             {/* Display this component if route doesn't match any above. */}
             <Route path="*" element={<NotFound />} />
             {/* Redirect if route doesn't match any above. */}
             {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
           </Route>
+
+          {/* Example of another layout for admin section */}
+          {/* <Route path="admin" element={<AdminAreaLayout />}>
+            <Route index element={<AdminHome />} />
+            <Route path="users" element={<AdminUsers />} />
+          </Route> */}
         </Route>
       </Routes>
     </BrowserRouter>

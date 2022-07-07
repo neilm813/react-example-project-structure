@@ -3,13 +3,36 @@ This view is not meaningfully different currently from the `Launch` Component,
 but since the launches view needs to also display a launch, a component was
 created to be re-used. 
 */
+
+import { useEffect, useState } from 'react';
+
 import 'App.css';
 import { getAllLaunches } from 'services';
 import { AxiosErr, CircleDotExpansion, Launch } from 'components';
-import { usePromise } from 'hooks';
 
 export const Launches = () => {
-  const [loading, launches, error] = usePromise(getAllLaunches());
+  const [launches, setLaunches] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Timeout to check the loading spinner out.
+    setTimeout(() => {
+      const fetchLaunches = async () => {
+        try {
+          const data = await getAllLaunches();
+          setLaunches(data);
+        } catch (e) {
+          console.log(e.response);
+          setError(e);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchLaunches();
+    }, 1500);
+  }, []);
 
   return (
     <div>
@@ -22,6 +45,7 @@ export const Launches = () => {
           .filter((launch) => launch.links.flickr.original.length)
           .map((launch) => (
             <Launch
+              key={launch.id}
               launch={launch}
               isPreview={true}
               style={{ width: '60%', marginBottom: '1rem' }}

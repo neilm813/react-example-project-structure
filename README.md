@@ -98,14 +98,23 @@
 
 - [You might not need an effect (from the creator of react)](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/you-might-not-need-an-effect)
 
-### Useful Packages
-
-- [react-query for data fetching](https://react-query.tanstack.com/overview)
-- [formik for form management](https://formik.org/)
-- [MUI styled components](https://mui.com/)
-
 ### Group Collaboration
 
 - [Git Branching Cheat sheet](https://docs.google.com/document/d/1lMPkGE6j0JhF6LX_-afnoSMOvCIVueGpFfkHo23_YU0/edit?usp=sharing)
 - A formatter and linter should be installed locally in the project so all collaborators are using it. Such as `prettier` and `ESLint` and a [pre-commit hook](https://prettier.io/docs/en/precommit.html#option-2-pretty-quickhttpsgithubcomazzpretty-quick) which auto formats the code by the project's formatter's config on each `git commit` to standardize formatting across all collaborators.
   - ESLint alone may be enough or better than having to configure prettier to play nice with ESLint since ESLint can already format.
+
+### Useful Packages
+
+- [react-query for data fetching](https://react-query.tanstack.com/overview)
+- [react-hook-form for form management](https://react-hook-form.com/)
+- [MUI styled components](https://mui.com/)
+
+### `useReducer`
+
+- When your project gets larger, managing and sharing state often becomes overly complex. This is when you should look into `useReducer` or a state management package.
+- [An Easy Guide to React useReducer() Hook](https://dmitripavlutin.com/react-usereducer/)
+
+### Custom Hooks
+
+- [React Custom Hooks With Real-Life Examples](https://betterprogramming.pub/react-custom-hooks-with-real-life-examples-c259139c3d71)
