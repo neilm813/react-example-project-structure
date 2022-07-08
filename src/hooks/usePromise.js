@@ -1,3 +1,5 @@
+// See views/Launches/Launches-with-custom-hook.js for example usage.
+
 import { useEffect, useState } from 'react';
 
 /**
