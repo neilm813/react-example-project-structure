@@ -1,4 +1,5 @@
 // See views/Launches/Launches-with-custom-hook.js for example usage.
+// react-query package is a robust solution to use in serious projects.
 
 import { useEffect, useState } from 'react';
 
@@ -39,7 +40,7 @@ export const usePromise = (promiseMakingCallback) => {
 
     promiseMakingCallback()
       .then((res) => {
-        console.log('usePromise .then, is request stale?', isStaleRequest);
+        // console.log('usePromise .then, is request stale?', isStaleRequest);
         if (isStaleRequest === false) {
           setData(res);
         }
