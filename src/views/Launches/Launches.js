@@ -16,22 +16,14 @@ export const Launches = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Timeout to check the loading spinner out.
-    setTimeout(() => {
-      const fetchLaunches = async () => {
-        try {
-          const data = await getAllLaunches();
-          setLaunches(data);
-        } catch (e) {
-          console.log(e.response);
-          setError(e);
-        } finally {
-          setLoading(false);
-        }
-      };
+    setLoading(true);
 
-      fetchLaunches();
-    }, 1500);
+    getAllLaunches()
+      .then((data) => {
+        setLaunches(data);
+      })
+      .catch((e) => setError(e))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
