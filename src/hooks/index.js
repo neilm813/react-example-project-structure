@@ -5,3 +5,4 @@ component's folder instead.
 */
 
 export { useLocalStorage } from './useLocalStorage';
+export { usePromise } from './usePromise';

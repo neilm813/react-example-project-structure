@@ -7,6 +7,7 @@ to make it easy for a single import statement to get any util from any file.
 export * from './constants';
 export * from './randomizers';
 export * from './unitConversions';
+export * from './timing';
 
 /* 
 This also makes it possible to use one import to import all utils needed,
