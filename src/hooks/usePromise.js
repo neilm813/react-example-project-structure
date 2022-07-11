@@ -53,19 +53,21 @@ export const usePromise = (promiseMakingCallback) => {
       .finally(() => setIsLoading(false));
 
     /* 
-    If you return a callback here, useEffect will call it before the next
+    If you return a 'cleanup' callback here, it will be called before the next
     useEffect. If our useEffect is about to run again, we know a new request
-    is about to happen. That means, if a previous request is still pending,
-    it should be ignored to prevent race conditions because we care more about
-    the new request's data.
+    is about to happen--if a previous request is still pending, it should be
+    ignored to prevent race conditions because want the newest data.
 
     See https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/you-might-not-need-an-effect#fetching-data
     */
-    const cleanup = () => {
+    return () => {
       isStaleRequest = true;
     };
-    return cleanup;
-  }, [promiseMakingCallback, requestCount]);
+  }, [
+    promiseMakingCallback,
+    // increasing requestCount will rerun useEffect to get fresh data.
+    requestCount,
+  ]);
 
   return {
     isLoading,
