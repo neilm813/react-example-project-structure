@@ -53,7 +53,7 @@ export const usePromise = (promiseMakingCallback) => {
       .finally(() => setIsLoading(false));
 
     /* 
-    If you return a 'cleanup' callback here, it will be called before the next
+    A 'cleanup' callback returned to useEffect will be called before the next
     useEffect. If our useEffect is about to run again, we know a new request
     is about to happen--if a previous request is still pending, it should be
     ignored to prevent race conditions because want the newest data.
@@ -63,17 +63,14 @@ export const usePromise = (promiseMakingCallback) => {
     return () => {
       isStaleRequest = true;
     };
-  }, [
-    promiseMakingCallback,
-    // increasing requestCount will rerun useEffect to get fresh data.
-    requestCount,
-  ]);
+  }, [promiseMakingCallback, requestCount]);
 
   return {
     isLoading,
     data,
     error,
     requestCount,
+    // increasing requestCount will rerun useEffect to get fresh data.
     refresh: () => setRequestCount(requestCount + 1),
   };
 };
